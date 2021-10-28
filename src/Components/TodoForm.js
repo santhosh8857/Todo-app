@@ -26,6 +26,7 @@ const TodoForm = (props) => {
           <Input
             type="text"
             name="todo"
+            value={newtodo}
             placeholder="Enter your task"
             onChange={(e) => {
               setNewtodo(e.target.value);
