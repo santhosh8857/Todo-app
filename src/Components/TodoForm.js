@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Form,
@@ -8,12 +8,29 @@ import {
   InputGroupAddon,
 } from "reactstrap";
 
-const TodoForm = () => {
+const TodoForm = (props) => {
+  const [newtodo, setNewtodo] = useState(""); // state to store the newtodo from input field
+
+  // function to handle submit event
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.addTodo(newtodo);
+    setNewtodo("");
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <FormGroup>
         <InputGroup>
-          <Input type="text" name="todo" placeholder="Enter your task" />
+          {/* onChange event to take the input value in the input field */}
+          <Input
+            type="text"
+            name="todo"
+            placeholder="Enter your task"
+            onChange={(e) => {
+              setNewtodo(e.target.value);
+            }}
+          />
           <InputGroupAddon addonType="prepend">
             <Button color="success">Add Todo</Button>
           </InputGroupAddon>
