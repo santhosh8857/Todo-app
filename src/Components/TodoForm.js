@@ -14,8 +14,11 @@ const TodoForm = (props) => {
   // function to handle submit event
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addTodo(newtodo);
-    setNewtodo("");
+    if (newtodo === "") alert("Please enter your next task!!");
+    else {
+      props.addTodo(newtodo);
+      setNewtodo("");
+    }
   };
 
   return (
